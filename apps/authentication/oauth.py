@@ -58,7 +58,7 @@ def github_logged_in(blueprint, token):
 google_blueprint = make_google_blueprint(
     client_id=Config.GOOGLE_ID,
     client_secret=Config.GOOGLE_SECRET,
-    scope=['profile', 'email','https://www.googleapis.com/auth/youtube'],
+    scope=['profile', 'email'],
     redirect_to='home_blueprint.index',
     storage=SQLAlchemyStorage(
         OAuth,

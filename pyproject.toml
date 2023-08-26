@@ -31,3 +31,10 @@ pyopenssl = "^23.2.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+# flask run dev mode command
+# RUN flask db init
+# RUN flask db migrate
+# RUN flask db upgrade
+[tool.poetry.scripts]
+dev = "youtube_monetize.app:main"
