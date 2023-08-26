@@ -122,28 +122,21 @@
                 <div class="block block-two"></div>
                 <div class="block block-three"></div>
                 <div class="block block-four"></div>
-                <a href="javascript:void(0)">
-                  <img class="avatar" src="{{ config.ASSETS_ROOT }}/img/emilyz.jpg" alt="...">
-                  <h5 class="title">Mike Andrew</h5>
+                <a href="https://{{current_user.hd}}">
+                  <img class="avatar" src="{{current_user.picture}}"...">
+                  <h5 class="title">{{current_user.username}}</h5>
                 </a>
+                {% if current_user.hd %}
                 <p class="description">
-                  Ceo/Co-Founder
+                </a href="https://{{current_user.hd}}">{{current_user.hd}} </a>
                 </p>
+                {% endif %}
               </div>
             </p>
-            <div class="card-description">
-              Do not be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-            </div>
           </div>
           <div class="card-footer">
             <div class="button-container">
-              <button href="javascript:void(0)" class="btn btn-icon btn-round btn-facebook">
-                <i class="fab fa-facebook"></i>
-              </button>
-              <button href="javascript:void(0)" class="btn btn-icon btn-round btn-twitter">
-                <i class="fab fa-twitter"></i>
-              </button>
-              <button href="javascript:void(0)" class="btn btn-icon btn-round btn-google">
+              <button href="{{current_user.link}}" class="btn btn-icon btn-round btn-google">
                 <i class="fab fa-google-plus"></i>
               </button>
             </div>

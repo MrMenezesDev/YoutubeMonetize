@@ -11,17 +11,21 @@ from apps import db, login_manager
 
 from apps.authentication.util import hash_pass
 
+
 class Users(db.Model, UserMixin):
 
     __tablename__ = 'Users'
 
-    id            = db.Column(db.Integer, primary_key=True)
-    username      = db.Column(db.String(64), unique=True)
-    email         = db.Column(db.String(64), unique=True)
-    password      = db.Column(db.LargeBinary)
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(64), unique=False)
+    email = db.Column(db.String(64), unique=True)
+    picture = db.Column(db.String(100), nullable=True)
+    link = db.Column(db.String(100), nullable=True)
+    hd = db.Column(db.String(100), nullable=True)
+    password = db.Column(db.LargeBinary)
 
-    oauth_github  = db.Column(db.String(100), nullable=True)
-    oauth_google  = db.Column(db.String(100), nullable=True)
+    oauth_github = db.Column(db.String(100), nullable=True)
+    oauth_google = db.Column(db.String(100), nullable=True)
 
     def __init__(self, **kwargs):
         for property, value in kwargs.items():
@@ -52,6 +56,8 @@ def request_loader(request):
     user = Users.query.filter_by(username=username).first()
     return user if user else None
 
+
 class OAuth(OAuthConsumerMixin, db.Model):
-    user_id = db.Column(db.Integer, db.ForeignKey("Users.id", ondelete="cascade"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(
+        "Users.id", ondelete="cascade"), nullable=False)
     user = db.relationship(Users)

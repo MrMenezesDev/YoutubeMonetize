@@ -77,18 +77,30 @@ def google_logged_in(blueprint, token):
         account_info = info.json()
         id = account_info["id"]
         username = account_info["name"]
+        picture = account_info["picture"] if "picture" in account_info else None
+        link = account_info["link"] if "link" in account_info else None
+        hd = account_info["hd"] if "hd" in account_info else None
         query = Users.query.filter_by(oauth_google=id)
         try:
             user = query.one()
+            if user.picture != picture or user.username != username or user.link != link or user.hd != hd or user.email != account_info["email"] :
+                user.picture = picture
+                user.username = username
+                user.link = link
+                user.hd = hd
+                user.email = account_info["email"]
+                db.session.commit()
             login_user(user)
 
         except NoResultFound:
             # Save to db
             user = Users()
-            user.username = username
             user.oauth_google = id
             user.email = account_info["email"]
-            user.username = account_info["name"]
+            user.username = username
+            user.picture = picture
+            user.link = link
+            user.hd = hd
 
             # Save current user
             db.session.add(user)
