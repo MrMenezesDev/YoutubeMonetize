@@ -4,9 +4,11 @@ Copyright (c) 2019 - present AppSeed.us
 """
 
 import os
+import dotenv
+
 
 class Config(object):
-
+    dotenv.load_dotenv(verbose=True)
     basedir = os.path.abspath(os.path.dirname(__file__))
 
     # Set up the App SECRET_KEY
@@ -28,6 +30,18 @@ class Config(object):
     # Enable/Disable Github Social Login    
     if GITHUB_ID and GITHUB_SECRET:
          SOCIAL_AUTH_GITHUB  = True
+
+    # Enable/Disable Google Social Login
+    SOCIAL_AUTH_GOOGLE  = False
+
+    GOOGLE_ID      = os.getenv('GOOGLE_ID')
+    GOOGLE_SECRET  = os.getenv('GOOGLE_SECRET')
+
+    if GOOGLE_ID and GOOGLE_SECRET:
+        SOCIAL_AUTH_GOOGLE  = True
+    
+    
+
 
 class ProductionConfig(Config):
     DEBUG = False

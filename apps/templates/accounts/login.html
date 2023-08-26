@@ -88,6 +88,30 @@
                                 <br />
         
                             {% endif %}
+                            {% if config.SOCIAL_AUTH_GOOGLE %}
+
+                                <div class="text-center">
+            
+                                <span class="text-muted">or Sign IN with</span> 
+                                    
+                                    <br />
+                                    <br />
+                                    
+                                    <div class="text-center mx-auto">
+            
+                                    {% if config.SOCIAL_AUTH_GOOGLE %}
+                                        <a href="{{url_for('authentication_blueprint.login_google')}}" class="btn btn-google btn-sm">
+                                        <i class="fab fa-google"></i>
+                                        </a>
+                                    {% endif %}
+            
+                                    </div>
+            
+                                </div>  
+
+                                <br />
+        
+                            {% endif %}
 
 
                         </form>

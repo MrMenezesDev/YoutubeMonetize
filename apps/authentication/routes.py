@@ -11,6 +11,7 @@ from flask_login import (
 )
 
 from flask_dance.contrib.github import github
+from flask_dance.contrib.google import google
 
 from apps import db, login_manager
 from apps.authentication import blueprint
@@ -34,7 +35,16 @@ def login_github():
 
     res = github.get("/user")
     return redirect(url_for('home_blueprint.index'))
-    
+
+@blueprint.route("/google")
+def login_google():
+    """ Google login """
+    if not google.authorized:
+        return redirect(url_for("google.login"))
+
+    res = google.get("/user")
+    return redirect(url_for('home_blueprint.index'))
+   
 @blueprint.route('/login', methods=['GET', 'POST'])
 def login():
     login_form = LoginForm(request.form)

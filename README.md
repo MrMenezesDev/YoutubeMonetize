@@ -55,6 +55,9 @@ The meaning of each variable can be found below:
 - `OAuth` via Github
   - `GITHUB_ID`=<GITHUB_ID_HERE>
   - `GITHUB_SECRET`=<GITHUB_SECRET_HERE> 
+- `OAuth` via Google
+  - `GOOGLE_ID`=<GOOGLE_ID_HERE>
+  - `GOOGLE_SECRET`=<GOOGLE_SECRET_HERE> 
 
 <br />
 
