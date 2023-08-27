@@ -46,14 +46,14 @@ def add_canal():
         channel = Channels.query.filter_by(channel_id=item['id']).first()
         if channel:
             channel.channel_credentials = session['state']
-            db.session.update(channel)
+            db.session.add(channel)
             db.session.commit()
         else:
             channel = Channels(
                 channel_id=item['id'],
                 channel_name=item['snippet']['title'],
                 channel_image=item['snippet']['thumbnails']['default']['url'],
-                channel_credentials=session['state'],
+                channel_credentials=str(session['credentials']),
                 user_id=current_user.id
             )
             db.session.add(channel)

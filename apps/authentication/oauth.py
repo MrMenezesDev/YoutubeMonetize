@@ -89,7 +89,7 @@ def google_logged_in(blueprint, token):
                 user.link = link
                 user.hd = hd
                 user.email = account_info["email"]
-                db.session.update(user)
+                db.session.add(user)
                 db.session.commit()
             login_user(user)
 
