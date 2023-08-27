@@ -1,39 +1,46 @@
-{% extends "layouts/base.html" %}
-
-{% block title %} UI Icons {% endblock %} 
+{% extends "layouts/base.html" %} {% block title %} UI Icons {% endblock %}
 
 <!-- Specific Page CSS goes HERE  -->
-{% block stylesheets %}{% endblock stylesheets %}
+{% block stylesheets %}{% endblock stylesheets %} {% block content %}
 
-{% block content %}
-
-  <div class="content">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-header">
-            <h3 class="title"> Canais </h3>
-            <p class="category">Lista de canais para automação</p>
-            <a href="/autorize_canal">
-              <button type="submit" class="btn btn-fill btn-primary ml-auto">+ Adicionar Canal</button> 
-            </a>
-          </div>
-          <div class="card-body all-icons">
-            <div class="row">
-              {% for canal in canais %}
-              <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="title">Canais</h3>
+          <p class="category">Lista de canais para automação</p>
+          <a href="/autorize_canal">
+            <button type="submit" class="btn btn-fill btn-primary ml-auto">
+              + Adicionar Canal
+            </button>
+          </a>
+        </div>
+        <div class="card-body all-icons">
+          <div class="row">
+            {% for canal in canais %}
+            <div
+              class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6"
+            >
                 <div class="font-icon-detail">
-                  <img class="avatar" src="{{canal.channel_image}}">
+                  <img class="avatar" src="{{canal.channel_image}}" />
                   <p>{{canal.channel_name}}</p>
+                  <p>Inscrições {{canal.channel_subscriptions}} / {{canal.channel_internal_subscribed_count}} </p>
+                  <p>Inscritos {{canal.channel_subscribers}} / {{canal.channel_internal_subscribers_count}} </p>
                 </div>
+              <div class="card-footer">
+                <button onclick="window.location.href='/canal/{{canal.id}}/atualizar'" type="submit" class="btn btn-fill btn-primary">Atualizar</button>
+                <button onclick="window.location.href='/canal/{{canal.id}}/inscrever'" type="submit" class="btn btn-fill btn-primary">Inscrever-se</button>
+                <button onclick="window.location.href='/canal/{{canal.id}}/delete'" type="submit" class="btn btn-fill btn-primary">Delete</button>
               </div>
-              {% endfor %}
             </div>
+            {% endfor %}
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
 {% endblock content %}
 
