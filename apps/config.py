@@ -40,6 +40,14 @@ class Config(object):
     if GOOGLE_ID and GOOGLE_SECRET:
         SOCIAL_AUTH_GOOGLE  = True
     
+    # Youtube API
+
+    YOUTUBE_CLIENT_SECRET = os.path.join(os.path.dirname(
+    __file__), '../../credentials', 'client_secret.json')
+
+    YOUTUBE_SCOPES = ['https://www.googleapis.com/auth/youtube']
+    YOUTUBE_API_SERVICE_NAME = 'youtube'
+    YOUTUBE_API_VERSION = 'v3'
     
 
 

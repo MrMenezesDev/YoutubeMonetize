@@ -14,15 +14,17 @@
           <div class="card-header">
             <h3 class="title"> Canais </h3>
             <p class="category">Lista de canais para automação</p>
-            <button type="submit" class="btn btn-fill btn-primary ml-auto">+ Adicionar Canal</button> 
+            <a href="/autorize_canal">
+              <button type="submit" class="btn btn-fill btn-primary ml-auto">+ Adicionar Canal</button> 
+            </a>
           </div>
           <div class="card-body all-icons">
             <div class="row">
               {% for canal in canais %}
               <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
                 <div class="font-icon-detail">
-                  <i class="tim-icons icon-video_settings"></i>
-                  <p>icon-video_settings</p>
+                  <img class="avatar" src="{{canal.channel_image}}">
+                  <p>{{canal.channel_name}}</p>
                 </div>
               </div>
               {% endfor %}

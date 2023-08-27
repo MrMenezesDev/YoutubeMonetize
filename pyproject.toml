@@ -26,6 +26,8 @@ Flask-Minify = "^0.37"
 Flask-Dance = "^5.1.0"
 blinker = "^1.4"
 pyopenssl = "^23.2.0"
+google-auth-oauthlib = "^1.0.0"
+google-api-python-client = "^2.97.0"
 
 
 [build-system]
